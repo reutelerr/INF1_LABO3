@@ -48,17 +48,21 @@ int main() {
       // check if a value was entered
       if (inputScore.empty()) error = true;
       
-      
+      // 
       stringstream ss(inputScore);
       
-      ss >> score;
-      
-      if ((score < MIN_SCORE or score > MAX_SCORE) and score != BULLSEYE) 
+      // try and convert the user input into an integer
+      if (ss >> score) {
+         // check if the score is within the score range
+         if ((score < MIN_SCORE or score > MAX_SCORE) and score != BULLSEYE) 
+            error = true;
+      }
+      else 
          error = true;
-      
+           
    } while (error and 
            cout << "Entree non valide" << endl);
-   
+
    /*
    while (currentScore != 0) {
       
@@ -71,4 +75,3 @@ int main() {
    */
    return 0;
 }
-
